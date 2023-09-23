@@ -1,6 +1,6 @@
 namespace GeometryFigures
 {
-    public class Circle : IFigure
+    public class Circle : Figure
     {
         private double _radius;
         public double Radius => _radius;
@@ -12,7 +12,7 @@ namespace GeometryFigures
             _radius = radius;
         }
         
-        public double GetArea()
+        public override double GetArea()
         {
             return Math.PI * Math.Pow(_radius, 2);
         }

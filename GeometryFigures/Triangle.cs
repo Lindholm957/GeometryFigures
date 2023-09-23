@@ -1,6 +1,6 @@
 namespace GeometryFigures;
 
-public class Triangle : IFigure
+public class Triangle : Figure
 {
     private double _sideA;
     private double _sideB;
@@ -46,7 +46,7 @@ public class Triangle : IFigure
         return Math.Abs(Math.Pow(hypotenuse, 2) - (Math.Pow(adjacent, 2) + Math.Pow(opposite, 2))) < _calcTolerance;
     }
 
-    public double GetArea()
+    public override double GetArea()
     {
         double halfPerimeter = (_sideA + _sideB + _sideC) / 2;
         double s = Math.Sqrt(
