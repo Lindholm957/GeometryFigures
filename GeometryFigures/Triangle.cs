@@ -7,10 +7,12 @@ public class Triangle : IFigure
     private double _sideC;
     
     private bool _isRightTriangle;
+    private float _calcTolerance = 0.1f;
     
     public double SideA => _sideA;
     public double SideB => _sideB;
     public double SideC => _sideC;
+    public bool IsRightTriangle => _isRightTriangle;
 
     public Triangle(double sideA, double sideB, double sideC)
     {
@@ -32,7 +34,7 @@ public class Triangle : IFigure
         _isRightTriangle = GetIsRightTriangle();
     }
 
-    public bool GetIsRightTriangle()
+    private bool GetIsRightTriangle()
     {
         double hypotenuse = _sideA, adjacent = _sideB, opposite = _sideC;
         if (adjacent - hypotenuse > 0)
@@ -41,7 +43,7 @@ public class Triangle : IFigure
         if (opposite - hypotenuse > 0)
             Utils.Swap(ref hypotenuse, ref opposite);
 
-        return Math.Abs(Math.Pow(hypotenuse, 2) - Math.Pow(adjacent, 2) - Math.Pow(opposite, 2)) < 0;
+        return Math.Abs(Math.Pow(hypotenuse, 2) - (Math.Pow(adjacent, 2) + Math.Pow(opposite, 2))) < _calcTolerance;
     }
 
     public double GetArea()
