@@ -1,5 +1,5 @@
 ﻿namespace GeometryFigures;
 
-public class Figures
+public class IFigure
 {
 }
