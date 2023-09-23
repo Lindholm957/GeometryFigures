@@ -21,16 +21,16 @@ public class Triangle : Figure
             throw new ArgumentException("Неправильно указана одна из сторон.");
         }
         
-        double hypotenuse = Math.Max(_sideA, Math.Max(_sideB, _sideC));
-        double perimeter = _sideA + _sideB + _sideC;
-        
-        if (perimeter - hypotenuse - hypotenuse < 0)
-            throw new ArgumentException("Наибольшая сторона треугольника должна быть меньше суммы других сторон");
-
         _sideA = sideA;
         _sideB = sideB;
         _sideC = sideC;
         
+        double hypotenuse = Math.Max(_sideA, Math.Max(_sideB, _sideC));
+        double perimeter = _sideA + _sideB + _sideC;
+        
+        if ((perimeter - hypotenuse) - hypotenuse < 1e-7)
+            throw new ArgumentException(perimeter + " " + hypotenuse);
+
         _isRightTriangle = GetIsRightTriangle();
     }
 
